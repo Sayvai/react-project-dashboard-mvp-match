@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  gap: 1rem;
+}
+
+.container select,
+.container [type="date"] {
+  border: none;
+  background-color: var(--form-input-background-color);
+  border-radius: 0.3125rem;
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 0.4rem) center;
+  padding: 0.6em 1.6rem 0.6rem 0.6rem;
+}
+
+.container select {
+  background-image: url("../../assets/mvp-filter-select-arrow.svg");
+  cursor: pointer;
+}
+
+.container [type="date"] {
+  padding-right: 0.4rem;
+  cursor: text;
+}
+
+.container [type="date"]::-webkit-calendar-picker-indicator {
+  background-image: url("../../assets/mvp-filter-calendar.svg");
+  cursor: pointer;
+}
+
+.container button {
+  background-color: #005b96;
+}

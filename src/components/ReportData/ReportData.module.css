@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+}
+
+.container > section {
+  flex-grow: 1;
+}
+
+.container > section {
+  flex-basis: 60%;
+}
+
+.container > section:last-child {
+  flex-basis: 40%;
+}
