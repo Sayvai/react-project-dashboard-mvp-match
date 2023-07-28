@@ -67,22 +67,27 @@ const ReportDataChart = ({ data, mode }: ReportDataChartProps) => {
 
   return (
     <section id="report-data-chart" className={styles.container}>
-      <div className={styles.lengends}>
+      <div className={styles.lengends} aria-roledescription="Chart Legend">
         {Object.entries(chartColors).map(([label, color], index) => {
           return (
-            <span key={`${label}_${index}`} className={styles.legend}>
+            <span
+              key={`${label}_${index}`}
+              className={styles.legend}
+              aria-label="Legend"
+            >
               <span
                 className={styles.legend_color}
                 style={{ backgroundColor: color }}
+                aria-label={`Legend color: ${color}`}
               ></span>
-              <span>{label}</span>
+              <span aria-label={`Legend label: ${label}`}>{label}</span>
             </span>
           );
         })}
       </div>
       <div ref={divRef} className={styles.chart}></div>
       <div className={styles.total_amount}>
-        {total_label} | {total_amount}
+        {total_label} | {total_amount} USD
       </div>
     </section>
   );

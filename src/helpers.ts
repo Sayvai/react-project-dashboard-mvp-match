@@ -42,6 +42,7 @@ interface TransformedData {
         gatewayId: string;
         totalGatewayTransactionsAmount: number;
         gatewayTransactions: {
+          dateCreated: string;
           dateModified: string;
           paymentId: string;
           gatewayTransactionAmount: number;
@@ -52,6 +53,7 @@ interface TransformedData {
 }
 
 export interface GaetwayTransaction {
+  dateCreated: string;
   dateModified: string;
   paymentId: string;
   gatewayTransactionAmount: number;
@@ -116,6 +118,7 @@ export function transformData(
       gatewayId
     ].totalGatewayTransactionsAmount += amount;
     transformedData[projectId].gateways[gatewayId].gatewayTransactions.push({
+      dateCreated: created,
       dateModified: modified,
       paymentId: paymentId,
       gatewayTransactionAmount: amount,

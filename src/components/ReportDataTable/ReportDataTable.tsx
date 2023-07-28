@@ -101,7 +101,10 @@ const ReportDataTable = ({
     return projects.map((project) => {
       return project.gateways.map((gateway) => {
         return (
-          <div className={styles.gateway_accordion_container}>
+          <div
+            key={gateway.gatewayId}
+            className={styles.gateway_accordion_container}
+          >
             <h3
               className={styles.gateway_accordion_header}
               onClick={() => onAccordionClick(gateway.gatewayId)}
@@ -140,7 +143,7 @@ const ReportDataTable = ({
     return gatewayTransactions.map((transaction) => {
       return (
         <tr key={transaction.paymentId}>
-          <td>{transaction.dateModified}</td>
+          <td>{transaction.dateCreated}</td>
           <td>{transaction.paymentId}</td>
           <td>{transaction.gatewayTransactionAmount} USD</td>
         </tr>
@@ -169,7 +172,9 @@ const ReportDataTable = ({
         )}
       </section>
       <section className={styles.section_bottom}>
-        <span>Total: {totalProjectsTotalAmount} USD</span>
+        <span aria-label="Total amount from table">
+          Total: {totalProjectsTotalAmount} USD
+        </span>
       </section>
     </section>
   );

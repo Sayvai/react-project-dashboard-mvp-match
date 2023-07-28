@@ -66,6 +66,7 @@ const ReportFilterBar = ({
     <div className={styles.container}>
       <select
         name="projects"
+        aria-label="Select a project"
         onChange={(e) => setprojectFilter(e.target.value)}
       >
         <option value="None">Select project</option>
@@ -75,6 +76,7 @@ const ReportFilterBar = ({
 
       <select
         name="gateways"
+        aria-label="Select a gateway"
         onChange={(e) => setGatewayFilter(e.target.value)}
       >
         <option value="None">Select gateway</option>
@@ -85,11 +87,15 @@ const ReportFilterBar = ({
       <input
         type="date"
         name="fromDate"
+        aria-label="From date"
+        data-testid="fromDate"
         onChange={(e) => setFromDateFilter(e.target.value)}
       />
       <input
         type="date"
         name="toDate"
+        aria-label="To date"
+        data-testid="toDate"
         onChange={(e) => setToDateFilter(e.target.value)}
       />
       <button
