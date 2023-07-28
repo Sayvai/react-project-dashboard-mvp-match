@@ -1,7 +1,7 @@
 import { GatewayResponse, ProjectResponse, ReportResponse } from "./endpoints";
 
 export function getUserInitials(firstName: string, lastName: string): string {
-  return `${firstName[0]}${lastName[0]}`;
+  return `${firstName[0] || ""}${lastName[0] || ""}`;
 }
 
 export type ProjectsDictionary = {
@@ -158,7 +158,7 @@ export function transformData(
   return [roundToTwoDecimalPlaces(totalProjectsAmount), projects];
 }
 
-export function roundToTwoDecimalPlaces(num: number): number {
+function roundToTwoDecimalPlaces(num: number): number {
   return parseFloat(
     (Math.round((num + Number.EPSILON) * 100) / 100).toFixed(2)
   );
@@ -182,11 +182,7 @@ export function isGateways(data: Project[] | Gateway[]): data is Gateway[] {
   return (data as Gateway[])[0].gatewayId !== undefined;
 }
 
-export function isGateway(data: Project | Gateway): data is Gateway {
-  return (data as Gateway).gatewayId !== undefined;
-}
-
-export function getRandomHexColor(): string {
+function getRandomHexColor(): string {
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);
   const whiteContrast = 0xffffff;
   const colorInt = parseInt(randomColor, 16);
@@ -195,7 +191,9 @@ export function getRandomHexColor(): string {
   return "#" + contrastColor;
 }
 
-export function getChartColors(dataPoints: Gateway[] | Project[]) {
+export function getChartColors(
+  dataPoints: Gateway[] | Project[]
+): Record<string, string> {
   if (isGateways(dataPoints)) {
     return dataPoints.reduce<Record<string, string>>((acc, dataPoint) => {
       const label = dataPoint.gatewayName;
